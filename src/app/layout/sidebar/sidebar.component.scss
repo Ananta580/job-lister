@@ -1,0 +1,31 @@
+.menu-item {
+  @apply flex items-center space-x-4;
+  .icon {
+    @apply text-gray-3;
+    
+  }
+  .label {
+    @apply text-gray-2 text-lg font-light;
+    
+  }
+
+  /* Hover condition */
+  &:hover{
+    .icon {
+      @apply text-primary-300 transition-all duration-500;
+    }
+    .label {
+      @apply text-primary-300 transition-all duration-500;
+    }
+  }
+
+/* Active Condition */
+  &.active{
+    .icon {
+      @apply text-primary-500 transition-all duration-500;
+    }
+    .label {
+      @apply text-primary-500 font-semibold transition-all duration-500;
+    }
+  }
+}

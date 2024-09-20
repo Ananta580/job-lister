@@ -1,0 +1,17 @@
+<aside class="w-[20%] flex flex-col gap-10 h-screen bg-white p-5">
+  <img class="h-6 mr-auto" src="assets/images/logo.svg" />
+
+  <ul class="flex flex-col gap-4 ml-2">
+    <li *ngFor="let item of menu">
+      <a
+        [routerLink]="item.url"
+        class="menu-item"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <span class="icon material-symbols-rounded"> {{ item.icon }} </span>
+        <span class="label">{{ item.name }}</span>
+      </a>
+    </li>
+  </ul>
+</aside>
