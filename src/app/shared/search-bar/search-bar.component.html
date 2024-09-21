@@ -1,0 +1,16 @@
+<div class="flex relative">
+  <input
+    class="input-box"
+    [(ngModel)]="searchQuery"
+    placeholder="Search by Category, Company or . . . ."
+  />
+  <div class="button-group">
+    <button class="filter-button">
+      <span class="icon material-symbols-rounded"> tune </span>
+    </button>
+    <button class="search-button" (click)="searchJobs()">
+      <span class="icon material-symbols-rounded"> search_insights </span>
+      Search
+    </button>
+  </div>
+</div>

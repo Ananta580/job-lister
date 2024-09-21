@@ -1,0 +1,19 @@
+<ng-container *ngIf="landingPageJobs$ | async; else initialPage">
+  <ul class="h-[80vh] flex flex-col overflow-scroll">
+    <li class="mt-5 first:mt-10" *ngFor="let item of landingPageJobs$ | async">
+      <app-job-card [job]="item"></app-job-card>
+    </li>
+  </ul>
+</ng-container>
+
+<ng-template #initialPage>
+  <div class="initial-page">
+    <img src="assets/illustrations/landing_page.svg" alt="Initial Page" />
+
+    <h1>Find your dream job</h1>
+    <p>
+      Start searching to explore new career opportunities and take the next step
+      in your professional journey.
+    </p>
+  </div>
+</ng-template>

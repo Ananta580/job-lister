@@ -1,0 +1,26 @@
+<div
+  *ngIf="job"
+  class="w-full p-5 flex justify-between border border-transparent rounded-md bg-white hover:border-primary-300 transition-all duration-500 hover:drop-shadow cursor-pointer"
+>
+  <div class="left-side flex gap-5 items-center">
+    <img class="rounded" [src]="job.employer_logo" />
+    <div class="flex flex-col gap-1">
+      <h1 class="text-gray-dark font-medium">{{ job.job_title }}</h1>
+      <a
+        target="_blank"
+        [href]="job.employer_website"
+        class="text-[15px] text-primary-300"
+      >
+        {{ job.employer_name }}
+      </a>
+      <p class="text-xs text-gray-1 font-medium flex items-center gap-2">
+        <span class="material-symbols-rounded text-xs text-primary-300"
+          >location_on</span
+        >
+        {{ job.job_city }}, {{ job.job_state }}, {{ job.job_country }}
+      </p>
+    </div>
+  </div>
+
+  <div class="right-side"></div>
+</div>
