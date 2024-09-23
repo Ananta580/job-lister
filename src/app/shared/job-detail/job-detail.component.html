@@ -1,8 +1,16 @@
-<div class="flex flex-col">
-  <div class="flex flex-col gap-3 justify-center items-center">
-    <img
-      src="{{ job.employer_logo ?? (job.employer_name | dummyImage) }}"
-      class="rounded-lg w-20 h-20 object-contain"
-    />
+<ng-container *ngIf="!isLoading; else loadingScreen">
+  <div *ngIf="job$ | async; let job" class="flex flex-col">
+    <div class="flex flex-col gap-3 justify-center items-center">
+      <img
+        src="{{ job.employer_logo ?? (job.employer_name | dummyImage) }}"
+        class="rounded-lg w-20 h-20 object-contain"
+      />
+    </div>
   </div>
-</div>
+</ng-container>
+
+<ng-template #loadingScreen>
+  <div class="flex flex-col gap-3 justify-center items-center">
+    <div class="animate-pulse bg-gray-200 h-20 w-20 rounded-lg"></div>
+  </div>
+</ng-template>

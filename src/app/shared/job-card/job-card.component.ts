@@ -1,10 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { JobApplication } from '../../models/job.search';
-import { CommonModule } from '@angular/common';
-import { FilterNullPipe } from '../../pipes/filterNull.pipe';
 import { DummyImagepipe } from '../../pipes/dummyImage.pipe';
-import { ApplyBtnComponent } from '../apply-btn/apply-btn.component';
+import { FilterNullPipe } from '../../pipes/filterNull.pipe';
 import { DrawerService } from '../../services/drawer.service';
+import { ApplyBtnComponent } from '../apply-btn/apply-btn.component';
 import { JobDetailComponent } from '../job-detail/job-detail.component';
 
 @Component({

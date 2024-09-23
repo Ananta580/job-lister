@@ -23,4 +23,13 @@ export class JobService {
       })
     );
   }
+
+  jobDetail(id: string): Observable<JobApplication> {
+    return this.appService
+      .get<JobSearchResponse>(`/job-details`, {
+        job_id: id,
+        extended_publisher_details: 'false',
+      })
+      .pipe(map((response: JobSearchResponse) => response.data[0]));
+  }
 }

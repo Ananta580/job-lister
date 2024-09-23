@@ -1,14 +1,14 @@
-.initial-page{
+.initial-page, .empty-page{
     @apply flex flex-col h-[80vh] w-full items-center justify-center;
 
     & img{
-        @apply  w-32;
+        @apply  w-52;
     }
     & h1{
         @apply text-2xl font-medium text-primary-300 my-3 mt-10;
     }
 
     & p{
-        @apply text-gray-2 mx-10;
+        @apply text-gray-2 mx-10 text-center;
     }
 }

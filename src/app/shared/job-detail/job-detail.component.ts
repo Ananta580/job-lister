@@ -1,30 +1,47 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { JobApplication } from '../../models/job.search';
 import { DummyImagepipe } from '../../pipes/dummyImage.pipe';
+import { JobService } from '../../services/job.service';
+import { HttpClientModule } from '@angular/common/http';
+import { AppService } from '../../services/app.service';
+import { DataService } from '../../services/data.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-job-detail',
   standalone: true,
-  imports: [CommonModule, DummyImagepipe],
+  imports: [CommonModule, DummyImagepipe, HttpClientModule],
+  providers: [JobService, AppService],
   templateUrl: './job-detail.component.html',
   styleUrl: './job-detail.component.scss',
 })
-export class JobDetailComponent {
+export class JobDetailComponent implements OnInit {
   @Input() jobId?: string;
-  job: JobApplication = {
-    job_id: 'zAaapsyXs8czr939AAAAAA==',
-    employer_name: 'Clio - Cloud-Based Legal Technology',
-    employer_logo:
-      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSi9CIXY0D8hjFsXqjO0eO3uF5CqZ-tgctTW2aj&s=0',
-    employer_website: 'https://www.clio.com',
-    employer_linkedin: undefined,
-    job_publisher: 'LinkedIn',
-    job_employment_type: 'FULLTIME',
-    job_title: 'Software Developer, Co-op',
-    job_posted_at_datetime_utc: '2024-09-17T17:35:47.000Z',
-    job_city: 'Toronto',
-    job_state: 'ON',
-    job_country: 'CA',
-  };
+
+  job$: Observable<JobApplication | null> = this.dataService.currentJob$;
+
+  isLoading = false;
+  constructor(
+    private jobService: JobService,
+    private dataService: DataService
+  ) {}
+
+  ngOnInit() {
+    this.loadJobDetails();
+  }
+
+  loadJobDetails() {
+    this.job$
+      .subscribe((job) => {
+        if (job == null || job?.job_id !== this.jobId) {
+          this.isLoading = true;
+          this.jobService.jobDetail(this.jobId ?? '').subscribe((job) => {
+            this.isLoading = false;
+            this.dataService.setCurrentJob(job);
+          });
+        }
+      })
+      .unsubscribe();
+  }
 }
