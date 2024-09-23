@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { JobDetailComponent } from './shared/job-detail/job-detail.component';
 
 export const MENU_LIST = [
   {
@@ -44,5 +44,9 @@ export const routes: Routes = [
   {
     path: '',
     component: DashboardComponent,
+  },
+  {
+    path: 'job/:id',
+    component: JobDetailComponent,
   },
 ];

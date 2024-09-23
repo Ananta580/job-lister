@@ -53,6 +53,8 @@ export interface JobApplication {
   job_occupational_categories?: string;
   job_naics_code?: string;
   job_naics_name?: string;
+  estimated_salaries?: any[];
+  employer_reviews?: any[];
 }
 
 export interface ApplyOption {

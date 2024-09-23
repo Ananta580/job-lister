@@ -1,0 +1,25 @@
+:host{
+    width: 100%;
+}
+
+.apply-btn {
+    @apply drop-shadow-2xl shadow-primary-500 w-full p-3 bg-gradient-to-r from-primary-300 to-primary-500 text-white font-medium rounded-full;
+    animation: animate-button 1s infinite;
+    &:hover {
+       @apply from-primary-500 to-primary-700  duration-500;
+       
+    }
+ }
+
+@keyframes animate-button {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.01);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+ 

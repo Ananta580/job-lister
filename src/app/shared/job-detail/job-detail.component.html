@@ -1,16 +1,160 @@
 <ng-container *ngIf="!isLoading; else loadingScreen">
-  <div *ngIf="job$ | async; let job" class="flex flex-col">
-    <div class="flex flex-col gap-3 justify-center items-center">
-      <img
-        src="{{ job.employer_logo ?? (job.employer_name | dummyImage) }}"
-        class="rounded-lg w-20 h-20 object-contain"
-      />
+  <ng-container *ngIf="!fullPage; else fullPageScreen">
+    <div *ngIf="job$ | async; let job" class="flex flex-col">
+      <div class="flex flex-col gap-3 justify-center items-center">
+        <!-- Logo -->
+        <img
+          src="{{ job.employer_logo ?? (job.employer_name | dummyImage) }}"
+          class="rounded-lg w-20 h-20 object-contain"
+        />
+
+        <!-- Briefing -->
+        <div class="flex flex-col items-center gap-1 mb-3">
+          <h1 class="text-gray-dark font-medium">{{ job.job_title }}</h1>
+          <a
+            target="_blank"
+            [href]="job.employer_website"
+            class="text-[15px] text-primary-300"
+          >
+            {{ job.employer_name | titlecase }}
+          </a>
+          <div class="flex gap-4">
+            <p class="text-xs text-gray-1 font-medium flex items-center gap-2">
+              <span class="material-symbols-rounded text-xs text-primary-300"
+                >schedule</span
+              >
+              {{ job.job_posted_at_datetime_utc | date : "MMM dd, yyyy" }}
+            </p>
+            <p class="text-xs text-gray-1 font-medium flex items-center gap-2">
+              <span class="material-symbols-rounded text-xs text-primary-300"
+                >location_on</span
+              >
+              {{
+                [
+                  job.job_city,
+                  job.job_state,
+                  job.job_country == "CA" ? "Canada" : "United States"
+                ] | filterNull
+              }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Job Descriptions -->
+        <div class="h-[60vh] overflow-scroll border-t border-b border-gray-4">
+          <h1 class="text-gray-dark text-lg font-medium mt-5">
+            Job Description
+          </h1>
+          <div
+            class="text-gray-1 text-sm py-5"
+            [innerHTML]="job.job_description ?? '' | formatText"
+          ></div>
+        </div>
+
+        <div class="w-full flex gap-3">
+          <!-- Apply button -->
+          <app-apply-btn></app-apply-btn>
+
+          <button
+            [routerLink]="['/job', job.job_id]"
+            class="text-primary-700 drop-shadow hover:animate-spin font-bold flex justify-center items-center px-3 rounded-full"
+          >
+            <span class="material-symbols-rounded">open_with</span>
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
+  </ng-container>
 </ng-container>
 
 <ng-template #loadingScreen>
   <div class="flex flex-col gap-3 justify-center items-center">
     <div class="animate-pulse bg-gray-200 h-20 w-20 rounded-lg"></div>
+  </div>
+</ng-template>
+
+<ng-template #fullPageScreen>
+  <span
+    [routerLink]="['/']"
+    class="text-xs my-5 mx-5 px-3 flex w-fit gap-2 items-center hover:bg-primary-300 hover:text-white rounded-full transition-all duration-500 cursor-pointer"
+  >
+    <span class="text-base material-symbols-rounded">arrow_back</span>
+    Back to Home</span
+  >
+  <div
+    *ngIf="job$ | async; let job"
+    class="flex flex-col m-6 rounded-lg shadow-md p-10 bg-white"
+  >
+    <div class="flex flex-col gap-3">
+      <div class="flex w-full justify-between">
+        <div class="flex flex-col gap-2 justify-center">
+          <!-- Logo -->
+          <img
+            src="{{ job.employer_logo ?? (job.employer_name | dummyImage) }}"
+            class="rounded-lg w-20 h-20 object-contain"
+          />
+
+          <!-- Briefing -->
+          <div class="flex flex-col gap-1 mb-3">
+            <h1 class="text-gray-dark font-medium">{{ job.job_title }}</h1>
+            <a
+              target="_blank"
+              [href]="job.employer_website"
+              class="text-[15px] text-primary-300"
+            >
+              {{ job.employer_name | titlecase }}
+            </a>
+            <div class="flex gap-4">
+              <p
+                class="text-xs text-gray-1 font-medium flex items-center gap-2"
+              >
+                <span class="material-symbols-rounded text-xs text-primary-300"
+                  >schedule</span
+                >
+                {{ job.job_posted_at_datetime_utc | date : "MMM dd, yyyy" }}
+              </p>
+              <p
+                class="text-xs text-gray-1 font-medium flex items-center gap-2"
+              >
+                <span class="material-symbols-rounded text-xs text-primary-300"
+                  >location_on</span
+                >
+                {{
+                  [
+                    job.job_city,
+                    job.job_state,
+                    job.job_country == "CA" ? "Canada" : "United States"
+                  ] | filterNull
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex w-1/2 flex-col gap-5">
+          <p class="font-semibold text-gray-dark">Apply From</p>
+          <div class="flex flex-wrap gap-2">
+            <ng-container *ngFor="let option of job.apply_options">
+              <a
+                href="{{ option.apply_link }}"
+                target="_blank"
+                class="text-xs px-2 py-2 rounded-md bg-primary-500 text-white cursor-pointer"
+              >
+                {{ option.publisher }}
+              </a>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+
+      <!-- Job Descriptions -->
+      <div class="overflow-scroll border-t border-gray-4">
+        <h1 class="text-gray-dark text-lg font-medium mt-5">Job Description</h1>
+        <div
+          class="text-gray-2 py-5"
+          [innerHTML]="job.job_description ?? '' | formatText"
+        ></div>
+      </div>
+    </div>
   </div>
 </ng-template>

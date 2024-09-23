@@ -13,3 +13,13 @@
 *{
     font-family: "Poppins", sans-serif;
 }
+
+/* Hide scrollbar for all div elements in all browsers */
+*::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

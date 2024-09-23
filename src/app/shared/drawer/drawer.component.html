@@ -1,11 +1,13 @@
 <!-- Backdrop for the drawer -->
 <div
-  class="animate-backdrop fixed inset-0 bg-gray-dark bg-opacity-50"
+  class="animate-backdrop z-[2] fixed inset-0 bg-gray-dark bg-opacity-50"
   (click)="close()"
 ></div>
 
 <!-- Drawer container -->
-<div class="animate-drawer fixed inset-y-0 right-0 w-[30%] bg-white shadow-lg">
+<div
+  class="animate-drawer z-[3] fixed inset-y-0 right-0 w-[35%] bg-white shadow-lg"
+>
   <!-- Drawer Content -->
   <div class="p-4">
     <!-- Dynamic content will be injected here -->

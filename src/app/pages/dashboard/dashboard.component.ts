@@ -5,11 +5,12 @@ import { DataService } from '../../services/data.service';
 import { JobService } from '../../services/job.service';
 import { CommonModule } from '@angular/common';
 import { JobCardComponent } from '../../shared/job-card/job-card.component';
+import { TopbarComponent } from '../../layout/topbar/topbar.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, JobCardComponent],
+  imports: [CommonModule, JobCardComponent, TopbarComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
