@@ -7,7 +7,8 @@ import { JobApplication } from '../models/job.search';
 })
 export class DataService {
   private landingPageJobsSubject: BehaviorSubject<JobApplication[] | null> =
-    new BehaviorSubject<JobApplication[] | null>([
+    new BehaviorSubject<JobApplication[] | null>(
+      //[
       // {
       //   job_id: '_10fNN2ISCG4dlASAAAAAA==',
       //   employer_name: 'Planview Incorporated',
@@ -156,7 +157,9 @@ export class DataService {
       //   job_state: 'CA',
       //   job_country: 'US',
       // },
-    ]);
+      // ]
+      null
+    );
   public landingPageJobs$: Observable<JobApplication[] | null> =
     this.landingPageJobsSubject.asObservable();
 
