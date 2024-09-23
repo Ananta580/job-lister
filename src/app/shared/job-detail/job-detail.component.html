@@ -7,7 +7,6 @@
           src="{{ job.employer_logo ?? (job.employer_name | dummyImage) }}"
           class="rounded-lg w-20 h-20 object-contain"
         />
-
         <!-- Briefing -->
         <div class="flex flex-col items-center gap-1 mb-3">
           <h1 class="text-gray-dark font-medium">{{ job.job_title }}</h1>
@@ -53,7 +52,7 @@
 
         <div class="w-full flex gap-3">
           <!-- Apply button -->
-          <app-apply-btn></app-apply-btn>
+          <app-apply-btn [url]="job.job_apply_link"></app-apply-btn>
 
           <button
             [routerLink]="['/job', job.job_id]"
@@ -68,8 +67,77 @@
 </ng-container>
 
 <ng-template #loadingScreen>
-  <div class="flex flex-col gap-3 justify-center items-center">
-    <div class="animate-pulse bg-gray-200 h-20 w-20 rounded-lg"></div>
+  <div
+    [ngClass]="{
+      'flex flex-col m-6 rounded-lg shadow-md p-10 bg-white': fullPage
+    }"
+  >
+    <div
+      class="flex w-full flex-col gap-3"
+      [ngClass]="{
+        'justify-center items-center': !fullPage
+      }"
+    >
+      <div class="animate-pulse bg-gray-4 h-20 w-20 rounded-lg"></div>
+      <div class="flex w-full flex-col gap-2 mb-3">
+        <div
+          class="w-1/3 rounded-md animate-pulse h-5 bg-gray-4"
+          [ngClass]="{
+            'w-full': !fullPage
+          }"
+        ></div>
+        <div class="w-1/2 rounded-md animate-pulse h-3 bg-gray-4"></div>
+        <div
+          class="w-1/3 rounded-md font-medium animate-pulse h-3 bg-gray-4"
+          [ngClass]="{
+            'w-full': !fullPage
+          }"
+        ></div>
+      </div>
+
+      <div
+        class="h-[60vh] w-full overflow-scroll border-t border-b border-gray-4"
+        [ngClass]="{
+          'border-none': fullPage
+        }"
+      >
+        <div class="flex flex-col gap-3 mt-5">
+          <div class="w-1/2 rounded-md animate-pulse h-3 bg-gray-4"></div>
+          <div
+            class="w-full rounded-md font-medium animate-pulse h-3 bg-gray-4"
+          ></div>
+          <div class="w-1/4 rounded-md animate-pulse h-3 bg-gray-4"></div>
+          <div
+            class="w-2/4 rounded-md font-medium animate-pulse h-3 bg-gray-4"
+          ></div>
+          <div class="w-1/3 rounded-md animate-pulse h-3 bg-gray-4"></div>
+          <div
+            class="w-full rounded-md font-medium animate-pulse h-3 bg-gray-4"
+          ></div>
+          <div class="w-1/2 rounded-md animate-pulse h-3 bg-gray-4"></div>
+          <div
+            class="w-full rounded-md font-medium animate-pulse h-3 bg-gray-4"
+          ></div>
+          <div class="w-1/4 rounded-md animate-pulse h-3 bg-gray-4"></div>
+          <div
+            class="w-2/4 rounded-md font-medium animate-pulse h-3 bg-gray-4"
+          ></div>
+          <div class="w-1/3 rounded-md animate-pulse h-3 bg-gray-4"></div>
+          <div
+            class="w-full rounded-md font-medium animate-pulse h-3 bg-gray-4"
+          ></div>
+        </div>
+      </div>
+
+      <div *ngIf="!fullPage" class="w-full flex gap-3">
+        <div
+          class="font-medium animate-pulse h-10 w-full rounded-full bg-gray-4"
+        ></div>
+        <div
+          class="w-20 rounded-full font-medium animate-pulse h-10 bg-gray-4"
+        ></div>
+      </div>
+    </div>
   </div>
 </ng-template>
 

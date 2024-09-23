@@ -39,7 +39,7 @@ export class SearchBarComponent {
     this.jobService
       .jobSearch({ ...this.queryParam, query: `${this.searchQuery}, Canada` })
       .subscribe((data: JobApplication[]) => {
-        this.dataService.setLandingPageJobs(data);
+        this.dataService.setFindWorkPageJobs(data);
         this.isLoading = false;
       });
   }

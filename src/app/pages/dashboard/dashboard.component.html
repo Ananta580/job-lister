@@ -1,39 +1,39 @@
-<div class="flex w-full p-10 pt-0 flex-col">
-  <app-topbar class="sticky top-0 z-[1 ] bg-background"></app-topbar>
+<div class="empty-page">
+  <p
+    class="text-center mx-10 mt-10 px-10 bg-white rounded-xl py-10 text-gray-2 border border-primary-300 hover:shadow-lg cursor-pointer transition-all duration-300"
+  >
+    <span class="text-primary-500 text-lg font-semibold pr-3">Job Fusion</span>
+    is a comprehensive job search platform that aggregates listings from
+    multiple sources, enabling users to find job opportunities across various
+    platforms in one convenient location. By consolidating listings from leading
+    job boards and company websites, Job Fusion simplifies the job search
+    process, helping candidates discover relevant positions more efficiently.
+  </p>
 
-  <ng-container *ngIf="landingPageJobs$ | async; else initialPage">
-    <ng-container
-      *ngIf="(landingPageJobs$ | async)!.length > 0; else emptyPage"
-    >
-      <ul class="flex flex-col overflow-scroll">
-        <li class="mt-5" *ngFor="let item of landingPageJobs$ | async">
-          <app-job-card [job]="item"></app-job-card>
+  <div class="flex flex-col justify-center items-center m-10 gap-5">
+    <ng-container *ngIf="(landingPageJobs$ | async)!.length > 0">
+      <ul class="flex w-full flex-wrap gap-5 overflow-scroll">
+        <li
+          class="w-[calc(50%-1rem)] h-auto"
+          *ngFor="let item of (landingPageJobs$ | async)?.slice(0, 4)"
+        >
+          <app-job-card [isLandingPage]="true" [job]="item"></app-job-card>
         </li>
       </ul>
     </ng-container>
-  </ng-container>
 
-  <ng-template #initialPage>
-    <div class="initial-page">
-      <img src="assets/illustrations/landing_page.svg" alt="Initial Page" />
+    <div class="flex w-full gap-5">
+      <button
+        class="flex items-center justify-center w-1/2 h-16 mt-5 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-600 transition-all duration-300"
+      >
+        Start Exploring
+      </button>
 
-      <h1>Find your dream job</h1>
-      <p>
-        Start searching to explore new career opportunities and take the next
-        step in your professional journey.
-      </p>
+      <button
+        class="flex items-center justify-center w-1/2 h-16 mt-5 bg-gray-1 text-white font-semibold rounded-xl hover:bg-primary-600 transition-all duration-300"
+      >
+        Track Applications
+      </button>
     </div>
-  </ng-template>
-
-  <ng-template #emptyPage>
-    <div class="empty-page">
-      <img src="assets/illustrations/empty_page.svg" alt="Initial Page" />
-
-      <h1>No opportunities found</h1>
-      <p>
-        We couldn't find any results for your search. Try changing the filters
-        or adjusting your search.
-      </p>
-    </div>
-  </ng-template>
+  </div>
 </div>

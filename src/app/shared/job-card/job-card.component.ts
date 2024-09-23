@@ -16,6 +16,8 @@ import { JobDetailComponent } from '../job-detail/job-detail.component';
 })
 export class JobCardComponent {
   @Input() job?: JobApplication;
+
+  @Input() isLandingPage = false;
   constructor(private drawerService: DrawerService) {}
 
   openJobDrawer(job_id?: string) {
