@@ -1,5 +1,6 @@
 <div
   *ngIf="job"
+  (click)="openJobDrawer(job.job_id)"
   class="w-full p-5 flex justify-between border border-transparent rounded-md bg-white hover:border-primary-300 transition-all duration-500 hover:drop-shadow cursor-pointer"
 >
   <div class="left-side flex gap-5 items-center">
@@ -27,15 +28,19 @@
           <span class="material-symbols-rounded text-xs text-primary-300"
             >location_on</span
           >
-          {{ [job.job_city, job.job_state, "Canada"] | filterNull }}
+          {{
+            [
+              job.job_city,
+              job.job_state,
+              job.job_country == "CA" ? "Canada" : "United States"
+            ] | filterNull
+          }}
         </p>
       </div>
     </div>
   </div>
 
-  <div
-    class="right-side w-[200px] justify-start flex align-bottom flex-col gap-1"
-  >
+  <div class="right-side w-[200px] justify-start flex items-end flex-col gap-1">
     <p class="text-xs text-gray-1 font-medium flex items-center gap-2">
       {{ job.job_publisher }}
     </p>

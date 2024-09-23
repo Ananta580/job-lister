@@ -1,0 +1,14 @@
+<!-- Backdrop for the drawer -->
+<div
+  class="animate-backdrop fixed inset-0 bg-gray-dark bg-opacity-50"
+  (click)="close()"
+></div>
+
+<!-- Drawer container -->
+<div class="animate-drawer fixed inset-y-0 right-0 w-[30%] bg-white shadow-lg">
+  <!-- Drawer Content -->
+  <div class="p-4">
+    <!-- Dynamic content will be injected here -->
+    <ng-container #drawerContent></ng-container>
+  </div>
+</div>
