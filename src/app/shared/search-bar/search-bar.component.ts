@@ -17,8 +17,8 @@ export class SearchBarComponent {
   queryParam: JobSearchParams = {
     query: '',
     page: 1,
-    num_pages: 1,
-    date_posted: 'today',
+    num_pages: 20,
+    date_posted: '3days',
     fields:
       'job_id, employer_name, employer_logo, employer_website, employer_linkedin, job_publisher, job_employment_type, job_title, job_posted_at_datetime_utc, job_city, job_state, job_country',
   };
