@@ -6,7 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AppService {
-  private apiKey: string = '084227eac0msh826fc15a269fbd4p16e1cfjsn152e26c3dc83';
+  // private apiKey: string = '084227eac0msh826fc15a269fbd4p16e1cfjsn152e26c3dc83';
+  private apiKey: string = '0e1753dfb2msh55d3e2acd288959p1a1ddcjsn27a8edd4f075';
   private host: string = 'jsearch.p.rapidapi.com';
 
   private baseUrl: string = 'https://jsearch.p.rapidapi.com';
