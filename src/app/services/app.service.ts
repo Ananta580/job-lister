@@ -6,7 +6,6 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AppService {
-  // private apiKey: string = '084227eac0msh826fc15a269fbd4p16e1cfjsn152e26c3dc83';
   private apiKey: string = 'a01285857bmshb9cdc2c8a3ca2fbp19a15fjsn60b801d1d602';
   private host: string = 'jsearch.p.rapidapi.com';
 

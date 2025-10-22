@@ -29,30 +29,30 @@ export const MENU_LIST = [
     url: `/${APP_ROUTES.FIND_WORK}`,
     active: false,
   },
-  {
-    name: 'My Jobs',
-    icon: 'work',
-    url: `/${APP_ROUTES.MY_JOBS}`,
-    active: false,
-  },
-  {
-    name: 'Activity',
-    icon: 'family_link',
-    url: `/${APP_ROUTES.ACTIVITY}`,
-    active: false,
-  },
-  {
-    name: 'Tracking',
-    icon: 'bar_chart',
-    url: `/${APP_ROUTES.TRACKING}`,
-    active: false,
-  },
-  {
-    name: 'Notifications',
-    icon: 'notifications',
-    url: `/${APP_ROUTES.NOTIFICATIONS}`,
-    active: false,
-  },
+  // {
+  //   name: 'My Jobs',
+  //   icon: 'work',
+  //   url: `/${APP_ROUTES.MY_JOBS}`,
+  //   active: false,
+  // },
+  // {
+  //   name: 'Activity',
+  //   icon: 'family_link',
+  //   url: `/${APP_ROUTES.ACTIVITY}`,
+  //   active: false,
+  // },
+  // {
+  //   name: 'Tracking',
+  //   icon: 'bar_chart',
+  //   url: `/${APP_ROUTES.TRACKING}`,
+  //   active: false,
+  // },
+  // {
+  //   name: 'Notifications',
+  //   icon: 'notifications',
+  //   url: `/${APP_ROUTES.NOTIFICATIONS}`,
+  //   active: false,
+  // },
 ];
 export const routes: Routes = [
   {
